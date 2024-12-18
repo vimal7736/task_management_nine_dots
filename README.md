@@ -1,5 +1,5 @@
 # task_management_nine_dots
-nine_dots
+nine_dots----  
 `````````
 
   Run both server using front and backend simultaneously using  :  
@@ -9,16 +9,41 @@ nine_dots
 port of vite is changed from default 5173  to   http://localhost:3000/ 
 and server port is     http://localhost:8000
 
-check vite configue
+server port
+``````````
+const port = process.env.PORT || 8000;
+
+check vite config
+````````````````
+
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port:3000,
+    proxy:{
+      '/api':{
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      }
+    }
+  }
+}) 
+
+
+
 
 just add .env file inside main project folder
-and add
+            
 
-NODE_ENV=development
-PORT=8000 
+         
 
-MONGO_URI= your mongo uri
-JWT_SECRET = aishuvimu123
+  add this = () =>{  
+                   NODE_ENV=development
+                   PORT=8000 
+                   MONGO_URI= your mongo uri
+                   JWT_SECRET = aishuvimu123
+                   }
 
          -- Project done using 
                 ``````````````````````
