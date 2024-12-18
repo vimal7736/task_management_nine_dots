@@ -246,6 +246,11 @@ const TaskScreen = () => {
         <div>
           <div>
             <h2 className="text-xl font-medium mb-4">Your Task List</h2>
+
+            {/* Add ! operator before fetchLoading to check Skeleton */}
+
+            {/* {!fetchLoading ? ( */}
+
             {fetchLoading ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {Array.from({ length: tasksPerPage }).map((_, index) => (
