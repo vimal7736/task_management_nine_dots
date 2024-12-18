@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setTask } from '../slices/features/tasks/taskSlice';
 import { useFetchTasksQuery, useCreateTaskMutation, useUpdateTaskMutation, useDeleteTaskMutation } from '../slices/features/tasks/taskApiSlice';
 import { useNavigate } from 'react-router-dom';
-import {  FaEye, FaTrashAlt } from 'react-icons/fa';
+import {  FaEye, FaSpinner, FaTrashAlt } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -253,7 +253,10 @@ const TaskScreen = () => {
                 ))}
               </div>
             ) : tasks.length === 0 ? (
-              <p className="text-center text-gray-500">No tasks available. Please create a task!</p>
+              <p className="text-center from-neutral-500  via-purple-950 to-gray-950 text-gray-100 bg-gradient-to-r   p-4 rounded-lg max-w-xs mx-auto">
+              No tasks available. Please create a task!
+            </p>
+            
             ) : (
               <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {currentTasks.map((task, index) => (
