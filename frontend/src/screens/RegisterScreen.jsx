@@ -3,8 +3,21 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRegisterMutation } from '../slices/features/auth/userApislice';
 import { setCredentials } from '../slices/features/auth/authSlice';
-import { toast } from 'react-toastify';
-import Loader from '../components/Loader';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const customToastStyle = (type) => {
+  if (type === 'success') {
+    return {
+      background: 'linear-gradient(to right, #6a1b9a, #4e148c, #212121)', // Purple to black gradient
+      color: 'white',
+    };
+  }
+  return {
+    background: 'linear-gradient(to right, #e53935, #b71c1c)', // Red gradient for error
+    color: 'white',
+  };
+};
 
 const RegisterScreen = () => {
   const [name, setName] = useState('');
@@ -36,16 +49,17 @@ const RegisterScreen = () => {
       const res = await register({ name, email, password }).unwrap();
       dispatch(setCredentials({ ...res }));
       navigate('/tasks');
+      
     } catch (err) {
-      toast.error(err?.data?.message || err.error || 'An error occurred');
+      toast.error(err?.data?.message || err.error || "Error", { style: customToastStyle('error') });
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-white via-gray-600 to-red-950 flex items-center justify-center py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-r from-white via-gray-600 to-purple-950 flex items-center justify-center py-8 px-4">
 
       <div className="max-w-sm w-full bg-white p-6 rounded-lg shadow-lg relative z-10">
-        <h1 className="text-2xl font-bold text-center text-blue-600 mb-4">Register</h1>
+        <h1 className="text-2xl font-bold text-center text-gray-600 mb-4">Register</h1>
 
         <form onSubmit={submitHandler} className="space-y-4">
           <div>
@@ -107,13 +121,12 @@ const RegisterScreen = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 disabled:opacity-50 transition duration-300"
+            className="w-full bg-gray-700 text-white py-2 rounded-md hover:bg-gray-900 disabled:opacity-50 transition duration-300"
           >
             {isLoading ? 'Registering...' : 'Register'}
           </button>
         </form>
 
-        {isLoading && <Loader />}
 
         <div className="text-center mt-2">
           <p className="text-sm text-gray-600">

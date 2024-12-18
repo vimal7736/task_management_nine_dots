@@ -13,6 +13,7 @@ const App =()=>{
     <Header/>
     <Outlet/>
     <ToastContainer />
+    <Footer/>
     </>
   )
 }

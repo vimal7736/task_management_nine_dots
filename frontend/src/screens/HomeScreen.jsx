@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const HomeScreen = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-indigo-50 via-black to-black text-white flex flex-col items-center justify-center py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-r from-purple-700 via-purple-950 to-black text-white flex flex-col items-center justify-center py-12 px-4">
       <div className="text-center">
         <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl">
-          TaskManager
+          Task Manager
         </h1>
         <p className="mt-4 text-lg font-semibold max-w-lg mx-auto">
           Organize, track, and achieve your goals effortlessly. Stay productive and on top of your tasks!

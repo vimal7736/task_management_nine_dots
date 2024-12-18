@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
-// Register the necessary components in Chart.js
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const TaskProgressChart = ({ tasks }) => {
@@ -29,7 +28,6 @@ const TaskProgressChart = ({ tasks }) => {
     setTaskStatusCounts(counts);
   }, [tasks]);
 
-  // Data for the chart
   const data = {
     labels: ['Completed', 'In Progress', 'Not Started'],
     datasets: [
