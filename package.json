@@ -5,10 +5,14 @@
   "description": "MERN authentication system",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "concurrently \"npm run backend-start\" \"npm run frontend-start\"",
+    "backend-start": "node backend/server.js",
+    "frontend-start": "serve -s frontend/build",
+    "build": "npm run build-client",
+    "build-client": "cd frontend && npm install && npm run build",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "nodemon backend/server.js",
-    "client": "npm run dev --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "client": "cd frontend && npm install && npm start"
   },
   "author": "Brad Traversy",
   "license": "MIT",
@@ -23,10 +27,11 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.1.0",
     "react-router-dom": "^7.0.2",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "concurrently": "^8.2.2",
+    "serve": "^14.2.0"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
     "nodemon": "^2.0.22"
   }
 }
